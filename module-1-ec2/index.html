@@ -1,46 +1,967 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Resume</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mahan M V | BCA Student & Developer</title>
+
+    <meta name="description"
+        content="Portfolio of Mahan M V - BCA student interested in Software Development, Full-Stack Development, Cybersecurity, AI and Machine Learning.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at top right, #12304a, transparent 35%),
+                radial-gradient(circle at bottom left, #172554, transparent 35%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #38bdf8;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #0b1120;
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: #38bdf8;
+        }
+
+        .btn-secondary:hover {
+            background: #38bdf8;
+            color: #0b1120;
+        }
+
+        /* GENERAL */
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: white;
+        }
+
+        .section-title p {
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+        }
+
+        /* EDUCATION */
+        .education {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-item {
+            border-left: 4px solid #38bdf8;
+            background: #111827;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .education-item h3 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .education-item .institution {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .education-item p {
+            color: #94a3b8;
+        }
+
+        /* SKILLS */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #111827;
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            padding: 10px 17px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #38bdf8;
+            color: #0b1120;
+            border-color: #38bdf8;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+        }
+
+        .project-number {
+            color: #38bdf8;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project h3 {
+            margin: 10px 0;
+            color: white;
+        }
+
+        .project p {
+            color: #94a3b8;
+        }
+
+        .tools {
+            margin-top: 18px;
+            color: #38bdf8;
+            font-size: 14px;
+        }
+
+        /* CERTIFICATIONS */
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .cert {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        .cert span {
+            color: #38bdf8;
+            margin-right: 8px;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievement-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .achievement {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            background: #111827;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+        }
+
+        .contact-item strong {
+            color: #38bdf8;
+        }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            padding: 10px 20px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0b1120;
+            background: #38bdf8;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #1f2937;
+            color: #64748b;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .projects-grid,
+            .certifications {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<div class="container">
-		<header>
-			<h1>Yeshwanth L M</h1>
-			<p>Cloud Solutions Engineer/Architect</p>
-		</header>
-		<section>
-			<h2>Summary</h2>
-			<p>Experienced Cloud Engineer specializing in designing, implementing, and managing scalable cloud infrastructure on AWS, Azure, and Google Cloud. Proficient in deploying and optimizing cloud resources, automating infrastructure with tools like Terraform and CloudFormation, and ensuring high availability, security, and cost efficiency. Skilled in monitoring system performance, troubleshooting complex issues, and applying cloud best practices to meet business objectives. Strong background in managing cloud-native applications, containerization, and continuous integration/continuous deployment (CI/CD) pipelines.</p>
-		</section>
-		<section>
-			<h2>Skills</h2>
-			<ul>
-				<li>AWS</li>
-				<li>Azure</li>
-				<li>CICD</li>
-				<li>Google Cloud</li>
-				<li>Bootstrap</li>
-				<li>React</li>
-			</ul>
-		</section>
-		<section>
-			<h2>Experience</h2>
-			<h3>Cloud Engineer, XYZ</h3>
-			<p>Developed and maintained multiple company websites using HTML, CSS, and JavaScript. Collaborated with designers and project managers to create visually appealing and user-friendly interfaces. Conducted regular code reviews to ensure high-quality and efficient code.</p>
-			<h3>Web Developer, ABC Agency</h3>
-			<p>Designed and implemented custom WordPress themes and plugins. Worked closely with clients to gather requirements and provide technical support. Conducted regular testing and debugging to ensure optimal performance.</p>
-		</section>
-		<section>
-			<h2>Education</h2>
-			<h3>Bachelor of Science in Computer Science</h3>
-			<p>University of ABC, Graduated May 20XX</p>
-		</section>
-		<section id="projects">
-			<h2>Projects</h2>
-			<p>Some text about your projects...</p>
-		</section>
-	</div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+
+            <div class="logo">Mahan M V</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>Hi, I'm <span>Mahan M V</span></h1>
+
+            <h2>BCA Student • Developer • Tech Enthusiast</h2>
+
+            <p>
+                Passionate about Software Development, Full-Stack Web Development,
+                Cybersecurity, Artificial Intelligence and Machine Learning.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>Who I am and what I aspire to become</p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="card">
+
+                <h3>Career Objective</h3>
+
+                <p>
+                    Motivated and passionate Bachelor of Computer Applications
+                    (BCA) student with strong interests in Software Development,
+                    Full-Stack Web Development, Cybersecurity, Artificial
+                    Intelligence and Machine Learning.
+                </p>
+
+                <br>
+
+                <p>
+                    I aspire to develop innovative, secure and scalable software
+                    solutions while continuously enhancing my technical expertise.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Future Goal</h3>
+
+                <p>
+                    My long-term goal is to pursue a Master of Science (MS) abroad
+                    in a specialization related to Cybersecurity, Artificial
+                    Intelligence or Software Engineering.
+                </p>
+
+                <br>
+
+                <p>
+                    I aim to gain advanced technical knowledge, research experience
+                    and global exposure while solving real-world problems through
+                    technology.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+
+        <div class="section-title">
+            <h2>Education</h2>
+            <p>My academic journey</p>
+        </div>
+
+        <div class="education">
+
+            <div class="education-item">
+
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+
+                <div class="institution">
+                    Amrita Vishwa Vidyapeetham, Mysuru Campus
+                </div>
+
+                <p>Expected Graduation: 2027</p>
+
+                <p>Current CGPA: <strong>7.38 / 10</strong></p>
+
+            </div>
+
+
+            <div class="education-item">
+
+                <h3>Pre-University (PU)</h3>
+
+                <div class="institution">
+                    Vijaya Vittala PU College, Mysuru
+                </div>
+
+                <p>Percentage: <strong>69.17%</strong></p>
+
+            </div>
+
+
+            <div class="education-item">
+
+                <h3>Class X (SSLC)</h3>
+
+                <div class="institution">
+                    United Academy, Hassan
+                </div>
+
+                <p>Percentage: <strong>91.2%</strong></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>Technical Skills</h2>
+            <p>Technologies and areas I work with</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill">Python</div>
+            <div class="skill">C</div>
+            <div class="skill">C++</div>
+            <div class="skill">Java</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">HTML5</div>
+            <div class="skill">CSS3</div>
+            <div class="skill">React.js</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Express.js</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">DBMS</div>
+            <div class="skill">Data Structures</div>
+            <div class="skill">Algorithms</div>
+            <div class="skill">Computer Networks</div>
+            <div class="skill">Operating Systems</div>
+            <div class="skill">Artificial Intelligence</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">Cybersecurity</div>
+            <div class="skill">Ethical Hacking</div>
+            <div class="skill">Cryptography</div>
+            <div class="skill">System Security</div>
+            <div class="skill">Big Data</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title">
+            <h2>Academic Projects</h2>
+            <p>Some of the projects I have developed</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- PROJECT 1 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>Meal Recipe Planner</h3>
+
+                <p>
+                    A full-stack web application that enables users to organize
+                    daily meal plans, add recipes, manage ingredients and
+                    calculate food expenses efficiently.
+                </p>
+
+                <div class="tools">
+                    React.js • Node.js • MongoDB • Express.js
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>Gym Management Website</h3>
+
+                <p>
+                    A responsive gym management website providing information
+                    about trainers, gym facilities, membership plans, locations
+                    and workout schedules.
+                </p>
+
+                <div class="tools">
+                    HTML • CSS • JavaScript
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>Note Maker Application</h3>
+
+                <p>
+                    A secure note management application with authentication
+                    and role-based access control for administrators and users.
+                </p>
+
+                <div class="tools">
+                    React.js • Node.js • MongoDB • JWT
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>Telegram Movie Bot</h3>
+
+                <p>
+                    A Telegram bot capable of searching movies, retrieving
+                    movie information using IMDb and providing automated
+                    responses using the Telegram Bot API.
+                </p>
+
+                <div class="tools">
+                    Node.js • IMDb API • Telegram Bot API
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COURSEWORK -->
+    <section>
+
+        <div class="section-title">
+            <h2>Relevant Coursework</h2>
+            <p>Academic areas of study</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill">Data Structures</div>
+            <div class="skill">Cloud Computing</div>
+            <div class="skill">Big Data</div>
+            <div class="skill">System Network Administration</div>
+            <div class="skill">Database Management Systems</div>
+            <div class="skill">Computer Networks</div>
+            <div class="skill">Operating Systems</div>
+            <div class="skill">Software Project Management</div>
+            <div class="skill">Web Technologies</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOOLS -->
+    <section>
+
+        <div class="section-title">
+            <h2>Technical Tools</h2>
+            <p>Development and networking tools</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill">Cisco Packet Tracer</div>
+            <div class="skill">GitHub</div>
+            <div class="skill">Wireshark</div>
+            <div class="skill">Visual Studio Code</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">Linux</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+
+        <div class="section-title">
+            <h2>Certifications</h2>
+            <p>Courses and certifications</p>
+        </div>
+
+        <div class="certifications">
+
+            <div class="cert">
+                <span>✓</span>
+                Java Course – Mastering the Fundamentals
+                (Scaler Topics)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                Data Structures and Algorithms
+                (Microsoft – Coursera)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                Python for Data Science and Artificial Intelligence
+                (IBM – Coursera)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                HTML/CSS/JavaScript Essentials
+                (Cisco Networking Academy)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                AWS Cloud Computing Certification
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                AI Awareness Session
+                (Global Knowledge Technologies)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                Workshop on Web3 and Blockchain Development
+                (GDG & Amrita)
+            </div>
+
+            <div class="cert">
+                <span>✓</span>
+                Carnatic Music Junior Level
+                (First Class)
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACHIEVEMENTS -->
+    <section>
+
+        <div class="section-title">
+            <h2>Achievements & Leadership</h2>
+            <p>Highlights beyond academics</p>
+        </div>
+
+        <div class="achievement-list">
+
+            <div class="achievement">
+                🏆 Selected for the Internal Smart India Hackathon (SIH)
+                conducted at Amrita Vishwa Vidyapeetham.
+            </div>
+
+            <div class="achievement">
+                🎯 Served as Event Coordinator for the State-Level Multifest,
+                Orientation Programme and Farewell Events at Amrita
+                Vishwa Vidyapeetham.
+            </div>
+
+            <div class="achievement">
+                🎤 Won Second Prize in the Mysuru District Level Singing
+                Competition.
+            </div>
+
+            <div class="achievement">
+                🎓 Recipient of the National Scholarship Portal (NSP)
+                Scholarship and Karnataka Labour Scholarship.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOFT SKILLS -->
+    <section>
+
+        <div class="section-title">
+            <h2>Soft Skills</h2>
+            <p>Professional and interpersonal strengths</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill">Problem Solving</div>
+            <div class="skill">Leadership</div>
+            <div class="skill">Teamwork</div>
+            <div class="skill">Communication</div>
+            <div class="skill">Critical Thinking</div>
+            <div class="skill">Analytical Thinking</div>
+            <div class="skill">Adaptability</div>
+            <div class="skill">Time Management</div>
+            <div class="skill">Project Management</div>
+            <div class="skill">Decision Making</div>
+            <div class="skill">Quick Learning</div>
+            <div class="skill">Public Speaking</div>
+            <div class="skill">Event Coordination</div>
+            <div class="skill">Attention to Detail</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXTRACURRICULAR -->
+    <section>
+
+        <div class="section-title">
+            <h2>Extracurricular Activities</h2>
+        </div>
+
+        <div class="achievement-list">
+
+            <div class="achievement">
+                🎭 Participated in various multi-fest events and college
+                competitions.
+            </div>
+
+            <div class="achievement">
+                🎵 Completed Carnatic Music Junior Level with First Class.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>Contact Me</h2>
+            <p>Let's connect and build something great</p>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    <strong>📧 Email</strong><br>
+                    <a href="mailto:mahanmv20@gmail.com">
+                        mahanmv20@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <strong>📱 Phone</strong><br>
+                    +91 83104 21952
+                </div>
+
+                <div class="contact-item">
+                    <strong>📍 Location</strong><br>
+                    Mysuru, Karnataka, India
+                </div>
+
+            </div>
+
+
+            <div class="social-links">
+
+                <a
+                    href="https://linkedin.com/in/mahanmvofficial"
+                    target="_blank">
+                    LinkedIn
+                </a>
+
+                <a
+                    href="https://github.com/mahanmvofficial"
+                    target="_blank">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Mahan M V. All Rights Reserved.
+        </p>
+
+        <p>
+            BCA Student | Developer | Technology Enthusiast
+        </p>
+
+    </footer>
+
 </body>
 </html>
